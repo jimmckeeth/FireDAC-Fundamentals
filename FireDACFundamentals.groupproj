@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{4312C28F-D0AF-4DF3-97E3-5D3CC049B436}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SQLite\SQLiteFireDAC.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MySQL\MySQLFireDAC.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MariaDB\MariaDBFireDAC.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SQLiteFireDAC">
+        <MSBuild Projects="SQLite\SQLiteFireDAC.dproj"/>
+    </Target>
+    <Target Name="SQLiteFireDAC:Clean">
+        <MSBuild Projects="SQLite\SQLiteFireDAC.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SQLiteFireDAC:Make">
+        <MSBuild Projects="SQLite\SQLiteFireDAC.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MySQLFireDAC">
+        <MSBuild Projects="MySQL\MySQLFireDAC.dproj"/>
+    </Target>
+    <Target Name="MySQLFireDAC:Clean">
+        <MSBuild Projects="MySQL\MySQLFireDAC.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MySQLFireDAC:Make">
+        <MSBuild Projects="MySQL\MySQLFireDAC.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MariaDBFireDAC">
+        <MSBuild Projects="MariaDB\MariaDBFireDAC.dproj"/>
+    </Target>
+    <Target Name="MariaDBFireDAC:Clean">
+        <MSBuild Projects="MariaDB\MariaDBFireDAC.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MariaDBFireDAC:Make">
+        <MSBuild Projects="MariaDB\MariaDBFireDAC.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SQLiteFireDAC;MySQLFireDAC;MariaDBFireDAC"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SQLiteFireDAC:Clean;MySQLFireDAC:Clean;MariaDBFireDAC:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SQLiteFireDAC:Make;MySQLFireDAC:Make;MariaDBFireDAC:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
