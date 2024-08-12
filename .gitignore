@@ -69,3 +69,4 @@ __recovery/
 modules/
 *.sdb-shm
 *.sdb-wal
+~$*.*
